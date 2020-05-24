@@ -5,3 +5,9 @@ This plugin displays the layer count and the filename on the screen of 3D printe
 This is a modification of the original plugin that allows compact display.
 
 ![](.screen.jpeg)
+
+E.g. `2/310 porteallen`
++ `2/310` current layer is 2 out of 310
++ `porteallen` filename
+
+An option allows to remove the prefix that Cura adds (`CE3_`, `CE3PRO_`, etc.)
