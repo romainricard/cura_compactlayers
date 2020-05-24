@@ -21,13 +21,6 @@ class CompactLayersCount(Script):
             "version": 2,
             "settings":
             {
-                "name":
-                {
-                    "label": "Text to display:",
-                    "description": "By default the current filename will be displayed on the LCD. Enter text here to override the filename and display something else.",
-                    "type": "str",
-                    "default_value": ""
-                },
                 "maxlayer":
                 {
                     "label": "Display max layer?:",
@@ -47,10 +40,7 @@ class CompactLayersCount(Script):
     
     def execute(self, data):
         max_layer = 0
-        if self.getSettingValueByKey("name") != "":
-            name = self.getSettingValueByKey("name")
-        else:
-            name = Application.getInstance().getPrintInformation().jobName
+        name = Application.getInstance().getPrintInformation().jobName
 
 
         prefix = self.getSettingValueByKey("prefix")
@@ -71,12 +61,7 @@ class CompactLayersCount(Script):
                 if line.startswith(";LAYER:"):
                     if self.getSettingValueByKey("maxlayer"):
                         display_text = display_text + "/" + max_layer
-                        display_text = display_text + " " + name
-                    else:
-                        if not self.getSettingValueByKey("scroll"):
-                            display_text = display_text + " " + name + "!"
-                        else:
-                            display_text = display_text + "!"
+                    display_text = display_text + " " + name
                     line_index = lines.index(line)
                     lines.insert(line_index + 1, display_text)
                     i += 1
